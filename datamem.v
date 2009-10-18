@@ -8,9 +8,8 @@ module datamemory (
 	input clock,
 	output [31:0] RD);
 
-	parameter MEMORY = 100;
-
-	reg [31:0] memory [MEMORY-1:0]; 
+	
+	reg [31:0] memory [1:12]; 
 	reg [31:0] rd;
 	integer i, data;
 	
@@ -18,15 +17,15 @@ module datamemory (
 	assign RD = rd;
 	
 initial
-begin : file_block
-
+	begin 
 	$readmemh("date1.txt", memory);
 end	
+
 	always @(posedge clock)
 		begin
 			if (MemRead)
 				begin
-					rd <= memory[ADDR];
+					rd <= memory[ADDR+1];
 				end
 		end
 	

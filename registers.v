@@ -13,8 +13,8 @@ module registersv (
 	wire [4:0] rs;
 	wire [4:0] rt;
 	wire [4:0] rd;
-	reg [4:0] rd1;
-	reg [4:0] rd2;
+	reg [31:0] rd1;
+	reg [31:0] rd2;
 	reg [31:0] regs [31:0]; 
 	assign rs = RN1;
 	assign rt = RN1;
