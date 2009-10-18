@@ -9,7 +9,7 @@ module datamemory (
 	output [31:0] RD);
 
 	
-	reg [31:0] memory [1:12]; 
+	reg [31:0] memory[0:13]; 
 	reg [31:0] rd;
 	integer i, data;
 	
