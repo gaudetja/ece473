@@ -25,7 +25,7 @@ end
 		begin
 			if (MemRead)
 				begin
-					rd <= memory[ADDR+1];
+					rd <= memory[ADDR];
 				end
 		end
 	
