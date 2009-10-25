@@ -1,4 +1,4 @@
-module registersv (
+module registers (
 	input [4:0] RN1,
 	input [4:0] RN2,
 	input [4:0] WN,
