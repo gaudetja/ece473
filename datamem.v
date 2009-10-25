@@ -11,8 +11,8 @@ module datamemory (
 	
 	reg [31:0] memory[0:13]; 
 	reg [31:0] rd;
+	reg [31:0] wd;
 	integer i, data;
-	
 	
 	assign RD = rd;
 	
@@ -26,6 +26,10 @@ end
 			if (MemRead)
 				begin
 					rd <= memory[ADDR];
+				end
+			if (MemWrite)
+				begin
+					memory[ADDR] = wd;
 				end
 		end
 	
