@@ -1,5 +1,3 @@
-
-
 module datamemory (
 	input [31:0] ADDR,
 	input [31:0] WD,
