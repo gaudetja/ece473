@@ -18,7 +18,10 @@ module controller (
 	parameter OR  = 3'b001;
 	parameter ADD = 3'b010;
 	parameter SUB = 3'b110;
+	parameter SLL = 3'b011;
+	parameter SRL = 3'b100;
 	parameter SLT = 3'b111;
+	parameter SRA = 3'b101;
 	
 	
 always @ (posedge clk)
@@ -34,29 +37,36 @@ always @ (posedge clk)
 	RegWrite = 0;
 	RegDest = 0;
 	
+	// R-Type
 	if (op == 0)
 		begin
+		RegDest = 1;
+		RegWrite = 1;
+		ALUsrc = 0;
 		case(func)
 			6'b100000:	ALU = ADD; 	//add
 			6'b100001:	ALU = ADD;	//addu
 			6'b100010:	ALU = SUB;	//sub
 			6'b100011:	ALU = SUB; 	//subu
 			6'b100100:	ALU = AND;	//and
-			6'b100101:	ALU = OR ;   //or
+			6'b100101:	ALU = OR;   //or
 			6'b100111:	ALU = OR;	//nor
 			6'b101010:	ALU = SLT;	//slt
-			6'b000000:	ALU = SLT; 	//sll
-			6'b000010:	ALU = SLT; 	//srl
-			6'b000011:	ALU = SLT;	//sra
-			6'b001000: Jump = 1;	//jr
-			6'b000000:	begin 
-						MemWrite = 0;//nop
+			6'b000000:	ALU = SLL; 	//sll
+			6'b000010:	ALU = SRL; 	//srl
+			6'b000011:	ALU = SRA;	//sra
+			6'b001000:  begin 
+						Jump = 1;	//jr
 						RegWrite = 0;
 						end
 		endcase
 		end
+	// I and J type
 	else
 		begin
+		RegDest = 0;
+		RegWrite = 1;
+		ALUsrc = 1;
 		case (op)
 			6'b001100:	ALU = AND;	//andi
 			6'b001101:	ALU = OR;	//ori
@@ -66,27 +76,37 @@ always @ (posedge clk)
 			6'b000100:	if (zero) 
 							begin 
 							Branch = 1;	//beq
+							RegWrite = 0;
 							end
 			6'b000101:	if (!zero)
 							begin
 							Branch = 1;	//bne
+							RegWrite = 0;
 							end
 			6'b100011:	begin
+						ALU = ADD;
 						MemtoReg = 1;
-						MemWrite = 1;//lw
+						MemRead = 1;	//lw
 						end
 			6'b101011:  begin
+						ALU = ADD;
 						MemWrite = 1;
-						MemtoReg = 0;		//sw
+						MemtoReg = 0;	//sw
 						end
-			
-			6'b001111:	RegWrite = 1;	//lui
-			6'b000010:	Jump = 1;	//j
-			6'b000011:	Jump = 1;	//jal
+			6'b001111:	begin
+						ALU = ADD; 
+						RegWrite = 1;	//lui
+						MemtoReg = 1;
+						end
+			6'b000010:	begin 
+						Jump = 1;	//j
+						end
+			6'b000011:	begin
+						Jump = 1;	//jal
+						end
 		endcase
 		end
 
 	end
-	
 	
 endmodule  
