@@ -15,6 +15,6 @@ initial
 end	
 	always @(*)
 		begin
-			rd <= memory[ADDR];
+			rd <= memory[ADDR/4];
 		end
 endmodule 
