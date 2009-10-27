@@ -3,7 +3,7 @@ module controller (
 	input [5:0] op,
 	input zero,
 	input clk,
-	output reg [2:0] ALU,
+	output reg [3:0] ALU,
 	output reg ALUsrc,
 	output reg Jump,
 	output reg Branch,
@@ -14,14 +14,15 @@ module controller (
 	output reg RegDest
 	);
 	
-	parameter AND = 3'b000;
-	parameter OR  = 3'b001;
-	parameter ADD = 3'b010;
-	parameter SUB = 3'b110;
-	parameter SLL = 3'b011;
-	parameter SRL = 3'b100;
-	parameter SLT = 3'b111;
-	parameter SRA = 3'b101;
+	parameter AND = 4'b0000;
+	parameter OR  = 4'b0001;
+	parameter ADD = 4'b0010;
+	parameter SUB = 4'b0110;
+	parameter SLL = 4'b0011;
+	parameter SRL = 4'b0100;
+	parameter SLT = 4'b0111;
+	parameter SRA = 4'b0101;
+	parameter NOR = 4'b1000;
 	
 	
 always @ (posedge clk)
@@ -50,7 +51,7 @@ always @ (posedge clk)
 			6'b100011:	ALU = SUB; 	//subu
 			6'b100100:	ALU = AND;	//and
 			6'b100101:	ALU = OR;   //or
-			6'b100111:	ALU = OR;	//nor
+			6'b100111:	ALU = NOR;	//nor
 			6'b101010:	ALU = SLT;	//slt
 			6'b000000:	ALU = SLL; 	//sll
 			6'b000010:	ALU = SRL; 	//srl

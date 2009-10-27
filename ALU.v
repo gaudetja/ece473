@@ -20,8 +20,6 @@ case(operation)
 	3'b101 : RESULT = x >> shamt;
 	3'b110 : RESULT = x - y;
 	
-	
-	
 	3'b111 : 
 		begin
 			if ((x - y)>0)
