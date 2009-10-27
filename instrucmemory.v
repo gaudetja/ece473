@@ -3,7 +3,7 @@ module instrucmemory (
 	input clock,
 	output [31:0] RD);
 
-	reg [31:0] memory[0:13]; 
+	reg [31:0] memory[0:50]; 
 	reg [31:0] rd;
 	integer i, data;
 		
@@ -11,9 +11,9 @@ module instrucmemory (
 
 initial
 	begin 
-	$readmemh("date1.txt", memory);
+	$readmemh("prog3.txt", memory);
 end	
-	always @(posedge clock)
+	always @(*)
 		begin
 			rd <= memory[ADDR];
 		end
