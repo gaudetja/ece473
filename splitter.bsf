@@ -1,0 +1,71 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 1991-2009 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+*/
+(header "symbol" (version "1.1"))
+(symbol
+	(rect 64 64 232 192)
+	(text "splitter" (rect 40 0 73 12)(font "Arial" ))
+	(text "inst" (rect 128 0 145 12)(font "Arial" ))
+	(port
+		(pt 0 56)
+		(input)
+		(text "instruction[31..0]" (rect 0 0 82 12)(font "Arial" ))
+		(text "instruction[31..0]" (rect 16 48 98 60)(font "Arial" ))
+		(line (pt 0 56)(pt 16 56)(line_width 3))
+	)
+	(port
+		(pt 168 40)
+		(output)
+		(text "offset[15..0]" (rect -104 0 -42 12)(font "Arial" ))
+		(text "offset[15..0]" (rect 80 32 142 44)(font "Arial" ))
+		(line (pt 168 40)(pt 152 40)(line_width 3))
+	)
+	(port
+		(pt 64 128)
+		(output)
+		(text "rs[4..0]" (rect -80 0 -45 12)(font "Arial" ))
+		(text "rs[4..0]" (rect 56 69 68 104)(font "Arial" )(vertical))
+		(line (pt 64 128)(pt 64 112)(line_width 3))
+	)
+	(port
+		(pt 96 128)
+		(output)
+		(text "rt[4..0]" (rect -80 0 -47 12)(font "Arial" ))
+		(text "rt[4..0]" (rect 88 71 100 104)(font "Arial" )(vertical))
+		(line (pt 96 128)(pt 96 112)(line_width 3))
+	)
+	(port
+		(pt 128 128)
+		(output)
+		(text "rd[4..0]" (rect -80 0 -45 12)(font "Arial" ))
+		(text "rd[4..0]" (rect 120 69 132 104)(font "Arial" )(vertical))
+		(line (pt 128 128)(pt 128 112)(line_width 3))
+	)
+	(port
+		(pt 168 64)
+		(output)
+		(text "op[5..0]" (rect -104 0 -67 12)(font "Arial" ))
+		(text "op[5..0]" (rect 107 56 144 68)(font "Arial" ))
+		(line (pt 168 64)(pt 152 64)(line_width 3))
+	)
+	(drawing
+		(rectangle (rect 8 16 152 112)(line_width 1))
+	)
+)
