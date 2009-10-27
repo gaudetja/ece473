@@ -9,7 +9,7 @@
 module ALU (input [2:0] operation,input [31:0] x, input [31:0] y, input shamt, output reg [31:0] RESULT, output reg zero);
 //reg [31:0] RESULT; 
 //assign RES = RESULT;
-always @(x,y,operation)
+always @(x,y,operation, shamt)
 begin
 case(operation)
 	3'b000 : RESULT = x & y;
