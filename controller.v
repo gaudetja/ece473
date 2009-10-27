@@ -25,12 +25,12 @@ module controller (
 	parameter NOR = 4'b1000;
 	
 	
-always @ (posedge clk)
+always @ (*)//posedge clk)
 	begin
 	// x and z values are NOT treated as don't-care's
 	ALU = 0;
 	ALUsrc = 0;
-	Jump = 0;
+	Jump = 1;
 	Branch = 0;
 	MemWrite = 0;
 	MemRead = 0; 
@@ -57,7 +57,7 @@ always @ (posedge clk)
 			6'b000010:	ALU = SRL; 	//srl
 			6'b000011:	ALU = SRA;	//sra
 			6'b001000:  begin 
-						Jump = 1;	//jr
+						Jump = 0;	//jr
 						RegWrite = 0;
 						end
 		endcase
@@ -100,10 +100,10 @@ always @ (posedge clk)
 						MemtoReg = 1;
 						end
 			6'b000010:	begin 
-						Jump = 1;	//j
+						Jump = 0;	//j
 						end
 			6'b000011:	begin
-						Jump = 1;	//jal
+						Jump = 0;	//jal
 						end
 		endcase
 		end

@@ -19,7 +19,7 @@ initial
 	$readmemh("date1.txt", memory);
 end	
 
-	always @(posedge clock)
+	always @(*)
 		begin
 			if (MemRead)
 				begin

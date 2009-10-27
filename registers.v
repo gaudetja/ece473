@@ -21,12 +21,10 @@ module registers (
 	assign rd = WN;
 	assign RD1 = rd1;
 	assign RD2 = rd2;
-			
-always @(posedge clock)
-	begin
+always @(clock) begin
 		// The reset signal overrides the hold signal; reset the value to 0
-		if (reset)
-		begin
+	if(clock) begin
+		if (reset)	begin
 			for(i = 0; i <= 15; i = i+1) begin
 				regs [i] <= i;
 			end
@@ -34,10 +32,14 @@ always @(posedge clock)
 		// Otherwise, change the variable only when updates are enabled
 		else
 		begin
-			if (RegWrite) regs[rd] = WD;
 			rd1 <= regs[rs];
 			rd2 <= regs[rt];
 		end
 	end
-
-endmodule
+	
+	if (!clock)
+	begin
+		if (RegWrite) regs[rd] = WD;
+	end
+end
+endmodule 
