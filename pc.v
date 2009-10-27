@@ -1,15 +1,7 @@
-module pc (
-	input [31:0] ADDR,
-	input wire clk,
-	output [31:0] PC);
-	
-	reg [31:0] regs;
-	
-	assign PC = regs;
-	
+module pc (	input [31:0] ADDR,	input wire clk,	output reg [31:0] PC);	
 always @ (posedge clk)
 begin
-	regs <= ADDR;
+	PC = ADDR;
 end
 
 endmodule 
