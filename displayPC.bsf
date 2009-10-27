@@ -33,15 +33,15 @@ applicable agreement for further details.
 	(port
 		(pt 184 32)
 		(output)
-		(text "dig1[7..0]" (rect 0 0 70 12)(font "Arial" ))
-		(text "dig1[7..0]" (rect 93 27 163 39)(font "Arial" ))
+		(text "dig1[3..0]" (rect 0 0 70 12)(font "Arial" ))
+		(text "dig1[3..0]" (rect 93 27 163 39)(font "Arial" ))
 		(line (pt 184 32)(pt 168 32)(line_width 3))
 	)
 	(port
 		(pt 184 48)
 		(output)
-		(text "dig2[7..0]" (rect 0 0 70 12)(font "Arial" ))
-		(text "dig2[7..0]" (rect 93 43 163 55)(font "Arial" ))
+		(text "dig2[3..0]" (rect 0 0 70 12)(font "Arial" ))
+		(text "dig2[3..0]" (rect 93 43 163 55)(font "Arial" ))
 		(line (pt 184 48)(pt 168 48)(line_width 3))
 	)
 	(drawing
