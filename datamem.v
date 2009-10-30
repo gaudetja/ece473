@@ -7,15 +7,19 @@ module datamemory (
 	output [31:0] RD);
 
 	
-	reg [31:0] memory[0:13]; 
-	reg [31:0] rd;
-	reg [31:0] wd;
-	integer i, data;
+	reg [31:0] memory[0:50]; 
+	reg [31:0] rd = 0;
+	reg [31:0] wd = 0;
+	integer i, data, k;
 	
 	assign RD = rd;
 	
 initial
 	begin 
+	for (k = 0; k < 50 ; k = k + 1)
+	begin
+		memory[k] = 32'h00;
+	end
 	$readmemh("date1.txt", memory);
 end	
 
