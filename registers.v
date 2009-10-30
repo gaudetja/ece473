@@ -9,7 +9,7 @@ module registers (
 	output [31:0] RD1,
 	output [31:0] RD2);
 	
-	integer i;
+	integer i,k;
 	wire [4:0] rs;
 	wire [4:0] rt;
 	wire [4:0] rd;
@@ -21,6 +21,15 @@ module registers (
 	assign rd = WN;
 	assign RD1 = rd1;
 	assign RD2 = rd2;
+	
+initial
+	begin
+	for (k = 0; k < 31 ; k = k + 1)
+	begin
+		regs[k] = 32'h00;
+	end
+end
+	
 always @(clock) begin
 		// The reset signal overrides the hold signal; reset the value to 0
 	if(clock) begin
@@ -32,8 +41,8 @@ always @(clock) begin
 		// Otherwise, change the variable only when updates are enabled
 		else
 		begin
-			rd1 <= regs[rs];
-			rd2 <= regs[rt];
+			rd1 = regs[rs];
+			rd2 = regs[rt];
 		end
 	end
 	
