@@ -44,6 +44,7 @@ always @ (*)//posedge clk)
 		RegDest = 1;
 		RegWrite = 1;
 		ALUsrc = 0;
+		MemtoReg = 0;
 		case(func)
 			6'b100000:	ALU = ADD; 	//add
 			6'b100001:	ALU = ADD;	//addu
@@ -65,6 +66,7 @@ always @ (*)//posedge clk)
 	// I and J type
 	else
 		begin
+		MemtoReg = 0;
 		RegDest = 0;
 		RegWrite = 1;
 		ALUsrc = 1;
@@ -86,18 +88,18 @@ always @ (*)//posedge clk)
 							end
 			6'b100011:	begin
 						ALU = ADD;
-						MemtoReg = 1;
+						MemtoReg = 0;
 						MemRead = 1;	//lw
 						end
 			6'b101011:  begin
 						ALU = ADD;
 						MemWrite = 1;
-						MemtoReg = 0;	//sw
+						MemtoReg = 1;	//sw
 						end
 			6'b001111:	begin
 						ALU = ADD; 
 						RegWrite = 1;	//lui
-						MemtoReg = 1;
+						MemtoReg = 0;
 						end
 			6'b000010:	begin 
 						Jump = 0;	//j

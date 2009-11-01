@@ -37,5 +37,6 @@ case(operation)
 	SRA : RESULT = x>>>shamt;
 	default;
 endcase
+	zero = RESULT[0];
 end
 endmodule
