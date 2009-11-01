@@ -19,7 +19,7 @@ initial
 end	
 	always @(*)
 		begin
-			i = ADDR>>2 +1;
+			i = ADDR>>2;
 			rd <= memory[i];
 		end
 endmodule 
