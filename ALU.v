@@ -23,8 +23,8 @@ case(operation)
 	OR : RESULT = x | y;
 	ADD : RESULT = x + y;
 	NOR : RESULT = ~(x | y);
-	SLL : RESULT = x << shamt;
-	SRL : RESULT = x >> shamt;
+	SLL : RESULT = y << shamt;
+	SRL : RESULT = y >> shamt;
 	SUB : RESULT = x - y;
 	
 	SLT : 
@@ -37,5 +37,6 @@ case(operation)
 	SRA : RESULT = x>>>shamt;
 	default;
 endcase
+	zero = RESULT[0];
 end
 endmodule
