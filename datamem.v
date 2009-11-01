@@ -6,8 +6,8 @@ module datamemory (
 	input clock,
 	output [31:0] RD);
 
-	
-	reg [31:0] memory[0:50]; 
+	parameter MEM = 1;
+	reg [31:0] memory[0:MEM]; 
 	reg [31:0] rd = 0;
 	reg [31:0] wd = 0;
 	integer i, data, k;
@@ -16,7 +16,7 @@ module datamemory (
 	
 initial
 	begin 
-	for (k = 0; k < 50 ; k = k + 1)
+	for (k = 0; k < MEM ; k = k + 1)
 	begin
 		memory[k] = 32'h00;
 	end
@@ -27,11 +27,12 @@ end
 		begin
 			if (MemRead)
 				begin
-					rd <= memory[ADDR];
+					i = (ADDR - 4097)>>2;
+					rd = memory[i];
 				end
 			if (MemWrite)
 				begin
-					memory[ADDR] = wd;
+					//memory[ADDR] = wd;
 				end
 		end
 	
