@@ -78,17 +78,19 @@ always @ (*)//posedge clk)
 			6'b001001:	ALU = SUB;	//subi
 			6'b000100:	if (zero) 
 							begin 
+							ALUsrc = 0;
 							Branch = 1;	//beq
 							RegWrite = 0;
 							end
 			6'b000101:	if (!zero)
 							begin
+							ALUsrc = 0;
 							Branch = 1;	//bne
 							RegWrite = 0;
 							end
 			6'b100011:	begin
 						ALU = ADD;
-						MemtoReg = 0;
+						MemtoReg = 1;
 						MemRead = 1;	//lw
 						end
 			6'b101011:  begin
